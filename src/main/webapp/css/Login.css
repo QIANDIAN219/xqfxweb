@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100%;
+}
+body {
+    width: 100%;
+    height: 100%;
+}
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color:rgb(247, 227, 204);
+}
+.logo {
+    top: 150px;
+    position: absolute;
+}
+.loginBox {
+    width: 348px;
+    height: 348px;
+    top: 240px;
+    position: absolute;
+    border-radius: 15px;
+    background-color: white;   
+}
+.buttonBox{
+    display: flex;
+}
+.buttonBox span{
+    padding: 16px;
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+}
+#student {
+    border-radius: 15px 0 0 0;
+    background-color: white;
+}
+#teacher {
+    border-radius: 0 15px 0 0;
+    background-color: rgb(233, 231, 231);
+}
+.inputBox {
+    width: 100%;
+    position: relative
+}
+#teacherBox {
+    top: 30px;
+    visibility: hidden;
+    position: absolute;
+}
+#studentBox {
+    top: 30px;
+    position: absolute;
+}
+.loginText {
+    margin: 0 44px 30px 44px;
+    padding: 10px;
+    width: 240px;
+    outline-color: rgb(73, 200, 243);
+    border: 0;
+    border-radius: 8px;
+    background-color: rgb(233, 231, 231);
+}
+.loginButton {
+    margin: 0 54px 30px 54px;
+    padding: 10px;
+    width: 240px;
+    outline: none;
+    border: 0;
+    border-radius: 8px;
+    background-color: rgb(73, 200, 243);
+}
+/* #loginButton {
+    margin: 0 54px 30px 54px;
+    top: 160px;
+    padding: 10px;
+    width: 240px;
+    outline: none;
+    border: 0;
+    border-radius: 8px;
+    background-color: rgb(73, 200, 243);
+    position: absolute;
+} */
+.other {
+    width: 100%;
+    position: relative
+}
+.other a:nth-child(1) {
+    top: 240px;
+    left: 30px;
+    text-decoration: none;
+    position: absolute;
+}
+.other a:nth-child(2) {
+    top: 240px;
+    right: 30px;
+    text-decoration: none;
+    position: absolute;
+}
+.reactBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.react {
+    top: 70px;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0.9;
+    visibility: hidden;
+    position: absolute;
+    display: block;
+    background-color: gray;
+}
