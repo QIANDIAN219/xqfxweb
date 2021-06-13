@@ -49,12 +49,12 @@ body {
     width: 100%;
     position: relative
 }
-#teacherBox {
+/*#teacherBox {
     top: 30px;
     visibility: hidden;
     position: absolute;
-}
-#studentBox {
+}*/
+#formBox {
     top: 30px;
     position: absolute;
 }

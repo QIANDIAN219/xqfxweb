@@ -6,18 +6,42 @@
   <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>Servlet</servlet-name>
-        <servlet-class>edu.guet.servlet.LoginServlet</servlet-class>
+        <servlet-class>cn.edu.guet.servlet.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteServlet</servlet-name>
+        <servlet-class>cn.edu.guet.servlet.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>cn.edu.guet.servlet.UserServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/studentLogin</url-pattern>
+        <url-pattern>/student</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/teacherLogin</url-pattern>
+        <url-pattern>/teacher</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>deleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteServlet</servlet-name>
+        <url-pattern>/Delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/showUsers</url-pattern>
+    </servlet-mapping>
+
 </web-app>

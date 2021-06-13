@@ -28,9 +28,11 @@ window.onload = function(){
                 react(1);
             }else {
                 if(userType == 0) {
-                    document.getElementById("studentBox").action = "studentLogin";
+                    // document.getElementById("formBox").action = "student";showUsers
+                    document.getElementById("formBox").action = "showUsers";
                 }else {
-                    document.getElementById("studentBox").action = "teacherLogin";
+                    // document.getElementById("formBox").action = "teacher";
+                    document.getElementById("formBox").action = "showUsers";
                 }
             }
         }
