@@ -16,6 +16,15 @@
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>cn.edu.guet.servlet.UserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdataServlet</servlet-name>
+        <servlet-class>cn.edu.guet.servlet.UpdataServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddServlet</servlet-name>
+        <servlet-class>cn.edu.guet.servlet.AddServlet</servlet-class>
+    </servlet>
+
 
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
@@ -30,6 +39,7 @@
         <url-pattern>/teacher</url-pattern>
     </servlet-mapping>
 
+
     <servlet-mapping>
         <servlet-name>deleteServlet</servlet-name>
         <url-pattern>/delete</url-pattern>
@@ -39,9 +49,24 @@
         <url-pattern>/Delete</url-pattern>
     </servlet-mapping>
 
+
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/showUsers</url-pattern>
     </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>UpdataServlet</servlet-name>
+        <url-pattern>/updata</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>AddServlet</servlet-name>
+        <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+
+
 
 </web-app>

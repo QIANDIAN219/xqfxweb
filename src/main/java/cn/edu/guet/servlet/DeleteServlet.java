@@ -23,12 +23,8 @@ public class DeleteServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = new String(request.getParameter("id"));
-        System.out.println("2删除ID" + id);
         UserDaoImpl.deleteUser(id);
-        UserDaoImpl userDao = new UserDaoImpl();
-        List<User> userList = userDao.getUsers();
-        request.setAttribute("userlist", userList);
-        request.getRequestDispatcher("main.jsp").forward(request, response);
-//        response.sendRedirect("main");
+        response.sendRedirect("showUsers");
     }
+
 }

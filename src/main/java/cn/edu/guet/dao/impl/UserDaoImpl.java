@@ -89,4 +89,50 @@ public class UserDaoImpl implements IUserDao {
             }
         }
     }
+
+    public static void updataUser(User user) {
+        Connection connection = OracleConnection.getConnection();
+        String sql = "UPDATE USERS SET username=?, address=? WHERE userid=?";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getAddress());
+            preparedStatement.setString(3, user.getUserid());
+            int a = preparedStatement.executeUpdate();
+            System.out.println("修改" + a + "条数据");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+    public static void addUser(User user) {
+        Connection connection = OracleConnection.getConnection();
+        String sql = "INSERT INTO USERS VALUES(?,?,?)";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user.getUserid());
+            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.setString(3, user.getAddress());
+            int a = preparedStatement.executeUpdate();
+            System.out.println("添加" + a + "条数据");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
 }

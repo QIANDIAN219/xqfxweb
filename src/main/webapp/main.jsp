@@ -53,7 +53,8 @@
                         <td><%=userList.get(i).getAddress()%></td>
                         <td>
                             <a href="delete?id=<%=userList.get(i).getUserid()%>" name="a" id="a<%=i%>">删除</a>
-                            <a href="Login.html">跳转</a>
+                            <a href="updata.jsp?userid=<%=userList.get(i).getUserid()%>&username=<%=userList.get(i).getUsername()%>&address=<%=userList.get(i).getAddress()%>">修改</a>
+                            <a href="add.jsp">添加</a>
                         </td>
                     </tr>
                 <%
