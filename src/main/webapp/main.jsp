@@ -17,20 +17,6 @@
             border-collapse: collapse;
         }
     </style>
-    <script>
-        <%--window.onload = function() {--%>
-        <%--    <%--%>
-        <%--        for(int i = 0; i < userList.size(); i++){--%>
-        <%--    %>--%>
-        <%--    document.getElementById("a<%=i%>").onclick = function() {--%>
-        <%--        document.getElementById("value").value = "<%=userList.get(i).getUserid()%>";--%>
-        <%--        document.getElementById("form").submit();--%>
-        <%--    }--%>
-        <%--    <%--%>
-        <%--        }--%>
-        <%--    %>--%>
-        <%--}--%>
-    </script>
 </head>
 <body>
     <form action="delete" method="POST" id="form" target="nm_iframe">
@@ -55,6 +41,7 @@
                             <a href="delete?id=<%=userList.get(i).getUserid()%>" name="a" id="a<%=i%>">删除</a>
                             <a href="updata.jsp?userid=<%=userList.get(i).getUserid()%>&username=<%=userList.get(i).getUsername()%>&address=<%=userList.get(i).getAddress()%>">修改</a>
                             <a href="add.jsp">添加</a>
+                            <a href="check.jsp">查询</a>
                         </td>
                     </tr>
                 <%

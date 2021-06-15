@@ -135,4 +135,58 @@ public class UserDaoImpl implements IUserDao {
             }
         }
     }
+
+    public static List<User> checkUsers(User conditionUser) {
+        Connection connection = OracleConnection.getConnection();
+        List<User> userList = new ArrayList<User>();
+        String sql = "SELECT * FROM USERS WHERE";
+        String[] condition = new String[3];
+        int k = 0;
+        if(conditionUser.getUserid().length() != 0) {
+            sql = sql.concat(" userid=? AND");
+            condition[k++] = conditionUser.getUserid();
+        }
+        if(conditionUser.getUsername().length() != 0) {
+            sql = sql.concat(" username=? AND");
+            condition[k++] = conditionUser.getUsername();
+        }
+        if(conditionUser.getAddress().length() != 0) {
+            sql = sql.concat(" address=? AND");
+            condition[k++] = conditionUser.getAddress();
+        }
+        if(sql.endsWith(" AND")) {
+            sql = sql.substring(0, sql.lastIndexOf(" AND"));
+        }
+        System.out.println(sql);
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            for(int i = 0; i < condition.length; i++) {
+                if(condition[i] != null) {
+                    preparedStatement.setString(i+1, condition[i]);
+                }
+            }
+            preparedStatement.execute();
+            resultSet = preparedStatement.getResultSet();
+            while (resultSet.next()) {
+                User user = new User();
+                user.setUserid(resultSet.getString("userid"));
+                user.setUsername(resultSet.getString("username"));
+                user.setAddress(resultSet.getString("address"));
+                userList.add(user);
+            }
+            return userList;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return null;
+    }
 }

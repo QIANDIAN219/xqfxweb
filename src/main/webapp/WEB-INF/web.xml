@@ -24,6 +24,10 @@
         <servlet-name>AddServlet</servlet-name>
         <servlet-class>cn.edu.guet.servlet.AddServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>checkUsersServlet</servlet-name>
+        <servlet-class>cn.edu.guet.servlet.checkUsersServlet</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -67,6 +71,10 @@
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>checkUsersServlet</servlet-name>
+        <url-pattern>/check</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>
