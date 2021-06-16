@@ -1,6 +1,6 @@
 package cn.edu.guet.dao.impl;
 
-import cn.edu.guet.JDBC.OracleConnection;
+import cn.edu.guet.JDBC.MyConnection;
 import cn.edu.guet.been.User;
 import cn.edu.guet.dao.IUserDao;
 
@@ -8,18 +8,21 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoImpl implements IUserDao {
-    Connection connection = OracleConnection.getConnection();
-    @Override
-    public List<User> getUsers() {
-        Connection connection = OracleConnection.getConnection();
+public class UserDaoImpl {
+
+    public static List<User> getUsers(int curPage, int pageSize) {
+        Connection connection = MyConnection.getConnection();
         List<User> userList = new ArrayList<User>();
-        String sql = "SELECT * FROM USERS";
-        Statement statement = null;
+        String sql = "SELECT * FROM USERS LIMIT ?, ?";
+        PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        int startPage = (curPage-1) * pageSize;
         try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(sql);
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, startPage);
+            preparedStatement.setInt(2, pageSize);
+            preparedStatement.execute();
+            resultSet = preparedStatement.getResultSet();
             while (resultSet.next()) {
                 User user = new User();
                 user.setUserid(resultSet.getString("userid"));
@@ -32,7 +35,7 @@ public class UserDaoImpl implements IUserDao {
             throwables.printStackTrace();
         } finally {
             try {
-                statement.close();
+                preparedStatement.close();
                 connection.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -41,8 +44,8 @@ public class UserDaoImpl implements IUserDao {
         return null;
     }
 
-    @Override
-    public User getUser(String userid) {
+    public static User getUser(String userid) {
+        Connection connection = MyConnection.getConnection();
         User user = new User();
         String sql = "SELECT * FROM USERS WHERE userid=?";
         PreparedStatement preparedStatement = null;
@@ -70,8 +73,8 @@ public class UserDaoImpl implements IUserDao {
     }
 
     public static void deleteUser(String userid) {
-        Connection connection = OracleConnection.getConnection();
-        String sql = "DELETE USERS WHERE userid=?";
+        Connection connection = MyConnection.getConnection();
+        String sql = "DELETE FROM USERS WHERE userid=?";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -91,7 +94,7 @@ public class UserDaoImpl implements IUserDao {
     }
 
     public static void updataUser(User user) {
-        Connection connection = OracleConnection.getConnection();
+        Connection connection = MyConnection.getConnection();
         String sql = "UPDATE USERS SET username=?, address=? WHERE userid=?";
         PreparedStatement preparedStatement = null;
         try {
@@ -114,7 +117,7 @@ public class UserDaoImpl implements IUserDao {
     }
 
     public static void addUser(User user) {
-        Connection connection = OracleConnection.getConnection();
+        Connection connection = MyConnection.getConnection();
         String sql = "INSERT INTO USERS VALUES(?,?,?)";
         PreparedStatement preparedStatement = null;
         try {
@@ -137,7 +140,7 @@ public class UserDaoImpl implements IUserDao {
     }
 
     public static List<User> checkUsers(User conditionUser) {
-        Connection connection = OracleConnection.getConnection();
+        java.sql.Connection connection = MyConnection.getConnection();
         List<User> userList = new ArrayList<User>();
         String sql = "SELECT * FROM USERS WHERE";
         String[] condition = new String[3];
@@ -188,5 +191,29 @@ public class UserDaoImpl implements IUserDao {
             }
         }
         return null;
+    }
+
+    public static int getCount() {
+        Connection connection = MyConnection.getConnection();
+        String sql = "SELECT COUNT(*) FROM USERS";
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.execute();
+            resultSet = preparedStatement.getResultSet();
+            resultSet.next();
+            return resultSet.getInt("COUNT(*)");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return 0;
     }
 }

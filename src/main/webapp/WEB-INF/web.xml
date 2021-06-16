@@ -58,7 +58,10 @@
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/showUsers</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/changePage</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>UpdataServlet</servlet-name>

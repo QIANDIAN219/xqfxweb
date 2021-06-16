@@ -28,7 +28,7 @@
             <input type="hidden" name="userid" value="<%=userid%>">
             姓名：<input type="text" name="username" value="<%=username%>">
             地址：<input type="text" name="address" value="<%=address%>">
-            <button type="submit" style="cursor: pointer">修改</button>
+            <button type="submit" style="cursor : pointer">修改</button>
         </form>
     </body>
 </html>

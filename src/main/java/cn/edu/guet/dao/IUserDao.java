@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface IUserDao {
     List<User> getUsers();
+
+    List<User> getUsers(int curPage);
+
     User getUser(String userid);
 }

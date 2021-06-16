@@ -1,6 +1,5 @@
 package cn.edu.guet.servlet;
 
-import cn.edu.guet.JDBC.OracleConnection;
 import cn.edu.guet.been.User;
 import cn.edu.guet.dao.impl.UserDaoImpl;
 
@@ -9,10 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LoginServlet extends HttpServlet {
@@ -27,7 +22,7 @@ public class LoginServlet extends HttpServlet {
             if(username.equals("test") && password.equals("123456")){
                 System.out.println("登录成功");
                 UserDaoImpl userDao = new UserDaoImpl();
-                List<User> userList = userDao.getUsers();
+                List<User> userList = userDao.getUsers(1, 3);
                 request.setAttribute("userlist", userList);
                 request.getRequestDispatcher("main.jsp").forward(request, response);
             }

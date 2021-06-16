@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="cn.edu.guet.been.User" %><%--
+<%@ page import="cn.edu.guet.been.User" %>
+<%--
   Created by IntelliJ IDEA.
   User: Lanzh
   Date: 2021/6/6
@@ -11,6 +12,7 @@
 <html>
 <head>
     <title>Title</title>
+    <meta charset="UTF-8">
     <style>
         table, th, tr, td {
             border: 1px solid black;
@@ -19,7 +21,7 @@
     </style>
 </head>
 <body>
-    <form action="delete" method="POST" id="form" target="nm_iframe">
+    <form action="delete" method="POST" id="form">
         <input type="hidden" name="value" id="value" value="">
         <table>
             <thead>
@@ -50,6 +52,11 @@
             </tbody>
         </table>
     </form>
-<%--    <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>--%>
+    <form action="changePage" method="post">
+        <input type="submit" name="changepage" value="首页">
+        <input type="submit" name="changepage" value="上一页">
+        <input type="submit" name="changepage" value="下一页">
+        <input type="submit" name="changepage" value="尾页">
+    </form>
 </body>
 </html>
