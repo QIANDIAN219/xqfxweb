@@ -37,20 +37,24 @@ public class UserServlet extends HttpServlet {
             }
         } else if(typeChangePage.equals("尾页")) {
             curPage = lastPage;
+        } else if(typeChangePage.equals("确定")) {
+            int page = Integer.parseInt(request.getParameter("page"));
+            if(page >= 1 && page <= lastPage) {
+                curPage = page;
+            }
         }
         response.sendRedirect("showUsers");
     }
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        System.out.println("showUsers");
-        System.out.println(request.getParameter("changepage"));
         String uri = new String(request.getRequestURI());
         if(uri.contains("show")) {
             UserDaoImpl userDao = new UserDaoImpl();
             List<User> userList = userDao.getUsers(curPage, pageSize);
             if(userList.size() != 0) {
                 request.setAttribute("userlist", userList);
+                request.setAttribute("curPage", curPage);
                 request.getRequestDispatcher("main.jsp").forward(request, response);
             }
         }

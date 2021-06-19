@@ -57,6 +57,8 @@
         <input type="submit" name="changepage" value="上一页">
         <input type="submit" name="changepage" value="下一页">
         <input type="submit" name="changepage" value="尾页">
+        <input type="text" name="page" style="width: 30px" value="<%=request.getAttribute("curPage")%>">
+        <input type="submit" name="changepage" value="确定">
     </form>
 </body>
 </html>
