@@ -21,10 +21,11 @@ public class LoginServlet extends HttpServlet {
             System.out.println("学生登录");
             if(username.equals("test") && password.equals("123456")){
                 System.out.println("登录成功");
-                UserDaoImpl userDao = new UserDaoImpl();
+                response.sendRedirect("showUsers");
+               /* UserDaoImpl userDao = new UserDaoImpl();
                 List<User> userList = userDao.getUsers(1, 3);
                 request.setAttribute("userlist", userList);
-                request.getRequestDispatcher("main.jsp").forward(request, response);
+                request.getRequestDispatcher("main.jsp").forward(request, response);*/
             }
         } else if(uri.contains("teacher")) {
             System.out.println("教师登录");

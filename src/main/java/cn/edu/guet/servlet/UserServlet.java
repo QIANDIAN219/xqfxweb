@@ -54,6 +54,7 @@ public class UserServlet extends HttpServlet {
             List<User> userList = userDao.getUsers(curPage, pageSize);
             if(userList.size() != 0) {
                 request.setAttribute("userlist", userList);
+                System.out.println(curPage);
                 request.setAttribute("curPage", curPage);
                 request.getRequestDispatcher("main.jsp").forward(request, response);
             }
